@@ -7,25 +7,83 @@
  * - Тернарний оператор
  */
 
-console.log("Before");
+// console.log("Before");
 
-console.log("After");
+/* 
+* - умова - це якийсь вираз, який завжди буде конвертовано у булевий тип (treu, false)
+* - тіло блоку if - це код, який виконується в тому випадку, якщо умова була істина (true)
+* - тіло блоку else - це код, який виконується в тому випадку, якщо умова була хибна (false)
 
-/**
- * -----------------------------
- */
-const points = 5000;
-
-/**
- * -----------------------------
- */
-const balance = 1000;
-let message;
-
-if (balance >= 0) {
-  message = "Positive";
+*
+if(умова) {
+  тіло блоку if
 } else {
-  message = "Negative";
+  тіло блоку else
+}
+*/
+
+// if(5 < 30){
+//   console.log("x > y");
+// } else {
+//   console.log("x < y");
+// }
+
+// console.log("After");
+
+/**
+ * -----------------------------
+ */
+/*
+
+ланцюжок повʼязаних перевірок, спочатку перевіряється умова 1, якщо вона істина, виконується тіло блоку іф 1, якщо умова хибна, джс переходить до виконання наступної умови, тобто, до наступного елсе іф і перевіряється умова 2. Ну і по аналогії, якщо вона істина - то виконується тіло блоку іф 2, якщо вона хибна, рухаємо нижче до наступних перевірок. Якщо всі умови були хибними - то виконується блок else.
+
+if(умова 1) {
+  тіло блоку if 1
+} 
+else if(умова 2){
+    тіло блоку if 2
+}
+else if(умова 3){
+    тіло блоку if 3
+}
+else {
+  тіло блоку else
 }
 
-console.log(message);
+*/
+
+// const points = 5000;
+// const userLevel = getUserLevel(points);
+
+// console.log(`Level ${userLevel}`);
+
+// function getUserLevel(points) {
+//   if (points <= 500) {
+//     return 1;
+//   } else if (points > 500 && points < 1500) {
+//     return 2;
+//   } else if (points >= 1500 && points < 3000) {
+//     return 3;
+//   } else {
+//     return 4;
+//   }
+// }
+
+/**
+ * -----------------------------
+ */
+
+// const balance = 1000;
+// let message;
+
+// if (balance >= 0) {
+//   message = "Positive";
+// } else {
+//   message = "Negative";
+// }
+
+// умова ? вираз 1 (якщо умова true) : вираз 2 (якщо умова false)
+
+// const message = balance >= 0 ? "Positive" : "Negative";
+
+// console.log(message);
