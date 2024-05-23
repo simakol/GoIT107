@@ -98,8 +98,10 @@
 
 // console.log(null || 2 || undefined); // 2
 
-console.log((1 && null && 2) > 0);
+// console.log((1 && null && 2) > 0);
 // (1 && null && 2) -> null
 // null > 0 -> 0 > 0 -> false
 
-// console.log(null || (2 && 3) || 4);
+// console.log(null || (2 && 3) || 4); // 3
+// 2 && 3 -> 3
+// null || 3 || 4 -> 3

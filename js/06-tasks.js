@@ -5,6 +5,9 @@
  */
 
 const sub = "free";
+const canAccessContent = sub === "pro" || sub === "vip";
+
+console.log("Чи є доступ до контенту?", canAccessContent);
 
 /*
  * Напиши скрипт, який перевіряє можливість відкрити чат з користувачем.
@@ -16,7 +19,7 @@ const sub = "free";
 
 const isOnline = true;
 const isFriend = true;
-const isDnd = true;
+const isDnd = false;
 
-// const canOpenChat = ;
-// console.log("Можно открыть чат? ", canOpenChat);
+const canOpenChat = isOnline && isFriend && !isDnd;
+console.log("можна відкрити чат? ", canOpenChat);
