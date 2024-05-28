@@ -2,8 +2,16 @@
  * Напиши скрипт, який підраховує суму всіх парних чисел у масиві.
  */
 
-const numbers = [1, 5, 8, 9, 12, 4, 15, 27, 30, 18, 14];
-let total = 0;
+// const numbers = [1, 5, 2, 8, 9, 12, 4, 15, 27, 30, 18, 14];
+// let total = 0;
+
+// for (const number of numbers) {
+//   if (number % 2 === 0) {
+//     total += number;
+//   }
+// }
+
+// console.log(total);
 
 /**
  * Напиши скрипт, який виводить у консоль ім'я та телефонний номер користувача.
@@ -15,6 +23,26 @@ let total = 0;
 const names = "Jacob,William,Solomon,Artemis";
 const phones = "89001234567,89001112233,890055566377,890055566300";
 
+function displayPhoneBook(names, phones) {
+  /*
+    1. перетворюємо імена та телефони на два масиви за допомогою split(",")
+    2. використовуючи цикл for ми переберемо будь-який масив
+    3. за допомогою шаблонного рядка сформуємо повідомлення і зробимо вивід в консоль
+    */
+
+  const namesArr = names.split(",");
+  const phonesArr = phones.split(",");
+
+  // оскікльки масиви однакової довжини (4), ми робимо 4 ітерації циклу. В тілі циклу ми звертаємось і до масиву імен і до масиву номерів по однакомому індексу (від 0 до 3)
+
+  for (let i = 0; i < namesArr.length; i += 1) {
+    console.log(i);
+    console.log(`${namesArr[i]}: ${phonesArr[i]}`);
+  }
+}
+
+// displayPhoneBook(names, phones);
+
 /**
  * Напиши скрипт, який виводить у консоль усі слова рядка
  * крім першого і останнього. Результуючий рядок не повинен починатися
@@ -22,13 +50,49 @@ const phones = "89001234567,89001112233,890055566377,890055566300";
  * Скрипт повинен працювати для будь-якого рядка.
  */
 
-const string = "Welcome to the future";
+const string = "Welcome to the future"; // "to the"
+
+function getMiddleString(string) {
+  // 1. Перетворюємо речення на масив слів за допомогою split(" ")
+  // 2. За допомогою методу slice робимо копію масиву без 1 і без останнього елементу
+  // 3. За допомогою методу join(" ") поєднуємо масив назад у рядок і викликати метод trim
+  // 4. повернути результат фукнції
+
+  // "     welcome to the     ".trim() -> "welcome to the".split(" ") -> ["welcome", "to", "the"]
+
+  const arrOfWords = string.trim().split(" ");
+  const resultArr = arrOfWords.slice(1, -1); // робимо копію з другого слова до передостаннього
+  const result = resultArr.join(" ").trim();
+  return result;
+}
+
+// console.log(getMiddleString(string));
 
 /**
  * Напиши скрипт пошуку найменшого числа у масиві. Код повинен працювати
  * для будь-якого масиву чисел. Використовуй цикл для розв'язання задачі.
  */
 
-const values = [2, 17, 94, 1, 23, 37];
-let min;
-console.log(min); // 1
+const values = [25, 17, 94, 5, 23, 3, 37];
+
+function findMinInArr(numbers) {
+  /*
+    1. створюємо змінну мін куди запишемо перше значення масиву
+    2. запускаємо цикл для перебору кожного елементу масиву
+        2.1. робимо перевірку, якщо поточне значення масиву менше за наше мінімальне, то поточне стане мінімальним
+    3. повернення результату
+    */
+
+  let min = numbers[0];
+
+  for (const number of numbers) {
+    if (number < min) {
+      // якщо поточне менше за мінімальне, то мінімальне стане поточним
+      min = number;
+    }
+  }
+
+  return min;
+}
+
+console.log(findMinInArr(values));
