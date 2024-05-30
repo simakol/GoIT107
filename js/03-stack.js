@@ -3,26 +3,20 @@
  * - Порядок виконання
  */
 
-function fnA() {
-  console.log("fnA execution");
+// * Стек - це структура даних, яка працює по принципу перший увійшов - останнім вийшов (FILO). Можна уявляти стек як дитячу пірамідку з кільцями - до останнього кільця можна дістатись, тільки якщо забрати всі кільця над ним.
+
+function a() {
+  b();
+  console.log("a");
 }
 
-function fnB() {
-  console.log("fnB execution");
+function b() {
+  c();
+  console.log("b");
 }
 
-function fnC() {
-  console.log("fnC execution");
+function c() {
+  console.log("c");
 }
 
-console.log("Before fnA execution");
-fnA();
-console.log("After fnA execution");
-
-console.log("Before fnB execution");
-fnB();
-console.log("After fnB execution");
-
-console.log("Before fnC execution");
-fnC();
-console.log("After fnC execution");
+a();

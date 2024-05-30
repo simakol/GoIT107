@@ -2,42 +2,56 @@
  * Псевдомасив arguments и Array.from
  */
 
-function foo() {
-  console.log(arguments);
+//* псевдомасив - це звичайний масив (тобто, структура даних де значення розділюються комами та кожне значення має свій індекс), але в ньому немає методів для роботи з масивом (push, pop і тд)
+
+//* arguments - це локальна змінна, яка доступна всередині функцій. В ній зберігається псевдомасив усіх аргумантів які ви передали під час виклику цієї функції
+
+//* Array.from() - це метод який приймає будь-яку ітерабельну сутність та перетворює її на звичайний масив (повертаючи новий масив). Він нам знадобиться щоб перетворити псевдомасив arguments на звичайний масив (тільки в разі того, якщо нам потрібно використовувати методи масивів, просто так робити це не потрібно).
+
+function fn() {
+  console.log(arguments); // якщо ми не знаємо точну кількість аргументів, яка прийде у функцію, нам допоможе ця локальна змінна, яка збере усі аргументи у псевдомасив
+
   const args = Array.from(arguments);
   console.log(args);
 }
 
-fn(1, 2, 3);
-fn(1, 2, 3, 4, 5);
-fn(1, 2, 3, 4, 5, 6, 7);
+// fn(1, 2, 3);
+// fn(1, 2, 3, 4, 5);
+// fn(1, 2, 3, 4, 5, 6, 7);
 
 /**
  * Напиши функцію add для складання довільної
  * кількості аргументів (чисел)
  */
 
-const add = function (arguments) {
-  const args = Array.from(arguments);
-  let total = 0;
+// function add() {
+//   let sum = 0;
+//   for (let i = 0; i < arguments.length; i += 1) {
+//     sum += arguments[i];
+//   }
 
-  for (const arg of args) {
-    total += arg;
-  }
+//   return sum;
+// }
 
-  return total;
-};
-
-console.log(add(1, 2, 3));
-console.log(add(1, 2, 4, 5, 6));
+// console.log(add(1, 2, 3));
+// console.log(add(1, 2, 4, 5, 6));
+// console.log(add(59, 73, -5, 8));
 
 /**
  * Напиши функцію calAverage() яка приймає довільну кількість
  * аргументів і повертає їхнє середнє значення. Усі аргументи
  * будуть лише числами.
  */
-function calAverage() {}
 
-console.log(calAverage(1, 2, 3, 4)); // 2.5
-console.log(calAverage(14, 8, 2)); // 8
-console.log(calAverage(27, 43, 2, 8, 36)); // 23.2
+// function calAverage() {
+//   let sum = 0;
+//   for (let i = 0; i < arguments.length; i += 1) {
+//     sum += arguments[i];
+//   }
+
+//   return sum / arguments.length;
+// }
+
+// console.log(calAverage(1, 2, 3, 4)); // 2.5
+// console.log(calAverage(14, 8, 2)); // 8
+// console.log(calAverage(27, 43, 2, 8, 36)); // 23.2
