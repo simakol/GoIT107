@@ -2,8 +2,15 @@
  * Array.prototype.map()
  * - Поелементо перебирає оригінальний масив
  * - Не змінює оригінальний масив
- * - Повертає новий масив такої ж довжини
+ * - Повертає новий масив такої ж довжини в якому кожен елемент буде змінено умовою колбек фукнції
  */
+
+// const numbers = [5, 6, 7];
+
+// const updatedNumbers = numbers.map((num) => num * 2);
+
+// console.log(numbers);
+// console.log(updatedNumbers);
 
 const allCars = [
   { make: "Honda", model: "CR-V", amount: 14, price: 24045 },
@@ -22,19 +29,20 @@ const allCars = [
  * Нехай функція getModels повертає масив моделей (поле model) всіх автомобілів.
  */
 
-const getModels = (cars) => {};
+const getModels = (cars) => cars.map((car) => car.model);
 
-console.table(getModels(allCars));
+// console.log(getModels(allCars));
 
 /**
  * Нехай функція makeCarsWithDiscount повертає новий масив об'єктів із змінним
  * значенням властивості price залежно від переданої знижки.
  */
 
-const makeCarsWithDiscount = (cars, discount) => {};
+const makeCarsWithDiscount = (cars, discount) =>
+  cars.map((car) => ({ ...car, price: car.price * (1 - discount) }));
 
-console.table(makeCarsWithDiscount(allCars, 0.2));
-console.table(makeCarsWithDiscount(allCars, 0.4));
+// console.table(makeCarsWithDiscount(allCars, 0.2));
+// console.table(makeCarsWithDiscount(allCars, 0.4));
 
 const players = [
   { id: "player-1", name: "Mango", timePlayed: 310, points: 54, online: false },
@@ -51,6 +59,11 @@ console.table(players);
 
 const playerIdToUpdate = "player-3";
 
-const updatedPlayers = players.map((player) => {});
+const updatedPlayers = players.map((player) => {
+  if (player.id === playerIdToUpdate) {
+    return { ...player, timePlayed: player.timePlayed + 100 };
+  }
+  return player;
+});
 
 console.log(updatedPlayers);
