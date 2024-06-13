@@ -10,8 +10,8 @@
 
 const numbers = [5, 10, 15, 20, 25];
 
-const filteredNumbers = numbers;
-console.log(filteredNumbers);
+const filteredNumbers = numbers.filter((number) => number % 2 === 0); // [10, 20]
+// console.log(filteredNumbers);
 
 /**
  * ---------------------------
@@ -104,26 +104,27 @@ const allCars = [
  * значення параметра threshold.
  */
 
-const filterByPrice = (cars, threshold) => {};
+const filterByPrice = (cars, threshold) =>
+  cars.filter((car) => car.price < threshold);
 
 // console.table(filterByPrice(allCars, 30000));
 // console.table(filterByPrice(allCars, 25000));
 
 /**
- * Нехай функція getCarsWithDiscount повертає масив автомобілів
+ * Нехай функція getCarsOnSale повертає масив автомобілів
  * властивість onSale яких true.
  */
 
-const getCarsWithDiscount = (cars) => {};
+const getCarsOnSale = (cars) => cars.filter((car) => car.onSale);
 
-// console.table(getCarsWithDiscount(allCars));
+// console.table(getCarsOnSale(allCars));
 
 /**
  * Нехай функція getCarsWithType повертає масив автомобілів тип яких збігається
  * зі значенням параметра type.
  */
 
-const getCarsWithType = (cars, type) => {};
+const getCarsWithType = (cars, type) => cars.filter((car) => car.type === type);
 
 // console.table(getCarsWithType(allCars, "suv"));
 // console.table(getCarsWithType(allCars, "sedan"));
