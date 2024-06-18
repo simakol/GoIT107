@@ -2,7 +2,7 @@ function foo() {
   console.log("foo -> this", this);
 }
 
-foo(); // Який this ???
+// foo(); // undefined (rule #1)
 
 /**
  * -------------------------
@@ -17,13 +17,13 @@ const book = {
   },
 };
 
-book.showThis(); // Який this ???
+// book.showThis(); // book (rule #2)
 
 const outerShowThis = book.showThis;
-outerShowThis(); // Який this ???
+// outerShowThis(); // undefined (rule #1)
 
 const outerShowTitle = book.showTitle;
-outerShowTitle(); // Який this ???
+// outerShowTitle(); // TypeError (undefined.title)
 
 /**
  * Напишіть метод calcTotalPrice(stoneName), який приймає назву каменю і
@@ -37,7 +37,10 @@ const chopShop = {
     { name: "Sapphire", price: 1400, quantity: 7 },
     { name: "Ruby", price: 800, quantity: 2 },
   ],
-  calcTotalPrice(stoneName) {},
+  calcTotalPrice(stoneName) {
+    const currentStone = this.stones.find((stone) => stone.name === stoneName);
+    return currentStone.price * currentStone.quantity;
+  },
 };
 
 console.log(chopShop.calcTotalPrice("Emerald")); // 5200
