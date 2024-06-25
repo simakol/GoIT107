@@ -91,4 +91,30 @@ const transactionHistory = [
   },
 ];
 
-const tableEl = document.querySelector('.js-transaction-table');
+const tbodyEl = document.querySelector('.js-tbody');
+
+const createTableBodyMarkup = transactionHistory =>
+  transactionHistory
+    .map(transaction => {
+      const { id, amount, date, business, name, type, account } = transaction;
+      // const id = transaction.id
+
+      return `
+      <tr>
+        <td>${id}</td>
+        <td>${amount}</td>
+        <td>${date}</td>
+        <td>${business}</td>
+        <td>${type}</td>
+        <td>${name}</td>
+        <td>${account}</td>
+      </tr>
+      `;
+    })
+    .join('');
+
+const tableMarkup = createTableBodyMarkup(transactionHistory);
+
+console.log(tableMarkup);
+
+tbodyEl.insertAdjacentHTML('beforeend', tableMarkup);

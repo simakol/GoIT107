@@ -37,6 +37,9 @@ body {
 .site-nav__link--current {
   color: tomato;
 }
+.site-nav__link--secondary {
+  color: violet;
+}
 
 .color-picker__option {
   display: inline-block;
@@ -61,4 +64,9 @@ body {
 .title__link {
   display: inline-flex;
   margin-left: 40px;
+}
+
+.page-title {
+  font-size: 50px;
+  color: chocolate;
 }
