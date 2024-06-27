@@ -6,7 +6,34 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>Search</title>
     <link rel="stylesheet" href="./css/styles.css" />
-    <link rel="stylesheet" href="./css/modal.css" />
+    <style>
+      .car-list {
+        list-style: none;
+        display: flex;
+        justify-content: center;
+        align-items: start;
+        gap: 50px;
+        flex-wrap: wrap;
+        padding: 50px;
+      }
+
+      .car-list li {
+        width: 300px;
+        height: 350px;
+        text-align: center;
+        box-shadow: 3px 3px 5px black;
+        border-radius: 20px;
+        padding: 10px;
+      }
+
+      .car-list li img {
+        width: 250px;
+        height: 150px;
+        border-radius: 20px;
+        display: inline-block;
+        object-fit: cover;
+      }
+    </style>
   </head>
   <body>
     <p><a href="index.html">Go back</a></p>
