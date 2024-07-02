@@ -22,6 +22,7 @@ ul {
   height: 300px;
   border-radius: 8px;
   margin-bottom: 10px;
+  object-fit: contain;
 }
 
 .item h2 {
@@ -44,6 +45,8 @@ ul {
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
+  text-align: center;
 }
 
 .modal img {
