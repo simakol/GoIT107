@@ -78,7 +78,9 @@ const names = [
 const namesMarkup = names
   .map(
     ({ firstName, age }) => `<div>
-<p>Name: ${firstName} | <span>Age: ${age}</span></p>
+<p>Name: ${firstName} 
+<br>
+<span>Age: ${age}</span></p>
 </div>`
   )
   .join("");
