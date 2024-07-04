@@ -12,9 +12,9 @@ const user = {
 };
 
 // Без деструктуризації
-function getUserName(obj) {
+function getUserName({ username: name, skills: { html, css, js } } = {}) {
   console.log(
-    `Hello my name is ${obj.name}, I know html - ${obj.skills.html}, css - ${obj.skills.css} and js -${obj.skills.js}`
+    `Hello my name is ${name}, I know html - ${html}, css - ${css} and js -${js}`
   );
 }
 
