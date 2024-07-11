@@ -1,0 +1,17 @@
+{
+  "name": "goit107",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "nodemon index.js"
+  },
+  "author": "Alexey Simak <aleksim.dev@gmail.com>",
+  "license": "ISC",
+  "dependencies": {
+    "notiflix": "^3.2.7"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.4"
+  }
+}
