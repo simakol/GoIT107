@@ -8,6 +8,8 @@ const logger = (time) => {
 
 console.log("До виклику setInterval");
 
+// setInterval(logger, 2000, 2000)
+
 console.log("Після виклику setInterval");
 
 /*
@@ -15,3 +17,8 @@ console.log("Після виклику setInterval");
  */
 
 const intervalId = setInterval(logger, 2000, 2000);
+
+setTimeout(() => {
+  console.log("Зупинка інтервалу!");
+  clearInterval(intervalId); // метод, який зупинить інтервальний виклик фукнції, приймає ідентифікатор вашого інтервалу
+}, 10e3);
