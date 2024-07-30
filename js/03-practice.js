@@ -1,35 +1,65 @@
 /**
  * Використовуємо https://pokeapi.co/ та створимо сторінку перегляду покемонів
- *
- * Переписуємо на async/await
  */
 
-function fetchPokemon(pokemonId) {
-  return fetch(`https://pokeapi.co/api/v2/pokemon/${pokemonId}`).then(
-    (response) => response.json()
-  );
+//* rewrite
+async function fetchPokemon(pokemonId) {
+  const URL = "https://pokeapi.co/api/v2";
+  const ENDPOINT = "pokemon";
+
+  const response = await fetch(`${URL}/${ENDPOINT}/${pokemonId}`);
+
+  if (!response.ok) {
+    throw new Error(response.status);
+  }
+
+  return await response.json();
 }
+
+//! old code
+// function fetchPokemon(pokemonId) {
+//   const URL = "https://pokeapi.co/api/v2";
+//   const ENDPOINT = "pokemon";
+
+//   return fetch(`${URL}/${ENDPOINT}/${pokemonId}`).then((response) => {
+//     if (!response.ok) {
+//       throw new Error(response.status);
+//     }
+//     return response.json();
+//   });
+// }
 
 const cardContainer = document.querySelector(".card-container");
 const searchForm = document.querySelector(".search-form");
 
-searchForm.addEventListener("submit", onSearch);
+searchForm.addEventListener("submit", handleSearch);
 
-function onSearch(e) {
-  e.preventDefault();
+async function handleSearch(event) {
+  event.preventDefault();
 
-  const form = e.currentTarget;
-  const searchQuery = form.elements.query.value;
+  const form = event.currentTarget;
+  const queryValue = form.elements.query.value.trim().toLowerCase();
 
-  fetchPokemon(searchQuery)
-    .then(renderPokemonCard)
-    .catch(onFetchError)
-    .finally(form.reset);
+  //* rewrite
+  try {
+    const data = await fetchPokemon(queryValue);
+    renderPokemonCard(data);
+  } catch (err) {
+    onFetchError(err);
+  } finally {
+    form.reset();
+  }
+
+  //! old code
+  // fetchPokemon(queryValue) // робимо запит на пошук покемона
+  //   .then(renderPokemonCard) // відмальовка карточки знайденого покемона
+  //   .catch(onFetchError) // оброблюємо помилку якщо покемона не знайдено з інформуванням користувача про це
+  //   .finally(() => form.reset());
 }
 
 function renderPokemonCard({ name, sprites, weight, height, abilities }) {
   const abilityListItems = abilities
-    .map(({ability}) => `<li class="list-group-item">${ability.name}</li>`)
+    .map(({ ability }) => `<li class="list-group-item">${ability.name}</li>`)
     .join("");
 
   const markup = `<div class="card">
@@ -49,5 +79,6 @@ function renderPokemonCard({ name, sprites, weight, height, abilities }) {
 }
 
 function onFetchError(error) {
+  cardContainer.innerHTML = "";
   alert("Упс, щось пішло не так і ми не знайшли вашого покемона!");
 }
