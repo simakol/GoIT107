@@ -38,7 +38,7 @@ load more btn states
 import refs from "./refs.js";
 import appendArticlesMarkup from "./templates/articles.js";
 import ButtonService from "./services/loadMoreService.js";
-import * as NewApiService from "./services/newsAPIService.js";
+import * as NewsApiService from "./services/newsAPIService.js";
 
 const loadMoreBtn = new ButtonService(refs.loadMoreBtn, "is-hidden");
 
@@ -72,7 +72,7 @@ async function handleSearch(event) {
   params.page = 1;
 
   try {
-    const { articles, totalResults } = await NewApiService.getNews(params);
+    const { articles, totalResults } = await NewsApiService.getNews(params);
 
     params.maxPage = Math.ceil(totalResults / params.pageSize);
 
@@ -108,7 +108,7 @@ async function handleLoadMore() {
   params.page += 1;
 
   try {
-    const { articles } = await NewApiService.getNews(params);
+    const { articles } = await NewsApiService.getNews(params);
     appendArticlesMarkup(articles);
   } catch (err) {
     Notiflix.Notify.failure(`Помилка під час запиту: ${err.message}`);
