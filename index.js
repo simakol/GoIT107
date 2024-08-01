@@ -72,7 +72,7 @@ async function handleSearch(event) {
   params.page = 1;
 
   try {
-    const { articles, totalResults } = await NewsApiService.getNews(params);
+    const { articles, totalResults } = await NewsApiService.getNews();
 
     params.maxPage = Math.ceil(totalResults / params.pageSize);
 
